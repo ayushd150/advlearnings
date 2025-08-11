@@ -1,13 +1,11 @@
 // simulate updating the state
 
-import { games } from "./store"
+import { GameManager } from "./store"
 import { startLogger } from "./logger"
 
+
+const gameManager = new GameManager();
+startLogger();
 setInterval(()=>{
-    games.push({
-        id:Math.random().toString(),
-        whitePlayerName: 'ayush',
-        blackPlayerName: 'aram',
-        moves:[]
-    })
+    gameManager.addGame(Math.random().toString())
 }, 5000)
