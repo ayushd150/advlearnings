@@ -44,7 +44,7 @@ export const Sender = () => {
         pc.onnegotiationneeded = async () => {
             console.error("onnegotiateion needed");
             const offer = await pc.createOffer();
-            await pc.setLocalDescription(offer);
+            await pc.setLocalDescription(offer); //whatever new ice cndidates or media is added will not get set
             socket?.send(JSON.stringify({
                 type: 'createOffer',
                 sdp: pc.localDescription
