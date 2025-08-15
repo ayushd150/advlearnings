@@ -9,7 +9,7 @@ const personProto = grpc.loadPackageDefinition(packageDefinition); //loads the p
 
 const PERSONS = [
     {
-        name: "harkirat",
+        name: "ayush",
         age: 45
     },
     {
