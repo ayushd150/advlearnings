@@ -21,3 +21,10 @@ It is a more efficient alternative to JSON or XML.
 1) field numbers 
 2) micros services - what all functions the service supports
 similar to open api spec file 
+
+**mocking  - whenever u connect to unit test they do not actually connect to your database, u mock out all external services
+
+deep mocking - mock recursively 
+
+
+unit testing - mock out external dependencies 
