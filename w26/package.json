@@ -1,0 +1,16 @@
+{
+  "name": "w26",
+  "version": "1.0.0",
+  "description": "Monitoring is about observing a system in real-time to make sure it’s healthy, performing well, and available.\r grabbing all metrics on a website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^5.0.3",
+    "express": "^5.1.0"
+  }
+}
