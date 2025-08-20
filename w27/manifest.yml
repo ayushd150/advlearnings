@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx  
+  # belongs to pod object itself, name of pod resource in k8s
+spec:
+  containers:
+    - name : nginx 
+    # belongs to container inside pod, name o contaioner within the pod spec
+      image: nginx
+      ports:
+      - containerPort: 80
+
+# deployment 
