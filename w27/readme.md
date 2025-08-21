@@ -24,3 +24,47 @@ worker node has 1)container runtime 2)kubelet(process which runs on ebvery worke
 developer decides how many containers run inisde 1 pod
 
 containers within a pod share same ip address
+
+**REPLICA
+
+A replica just means a copy of a Pod.
+
+For example, if you say replicas: 3 in a Deployment/ReplicaSet spec, it means:
+
+“Run 3 identical copies (replicas) of this Pod.”
+
+So replica = instance of a Pod.
+
+**REPLICASET
+A ReplicaSet in Kubernetes ensures that a specified number of Pod replicas are running at any given time.
+
+If a Pod crashes or gets deleted → ReplicaSet creates a new one.
+
+If there are too many Pods → ReplicaSet kills the extra ones.
+
+It’s like a controller that maintains Pod count.
+
+we can start pods in master node but isnt advisable
+
+benefits of running many containers in same pod:
+lot of times we have applications trying to talk to each other 
+
+**DEPLOYMENT
+
+A Deployment in Kubernetes is a higher-level abstraction that manages Pods (the smallest deployable unit) and ensures your application is running reliably.
+
+It allows you to:
+
+Deploy applications declaratively (define the desired state in YAML/JSON).
+
+Scale applications up or down (increase/decrease number of replicas).
+
+Perform rolling updates (update the app without downtime).
+
+Rollback to a previous version if something goes wrong.
+
+
+autoscaling grp auto scale ur servers
+k8s is container is container orchestration
+
+replica=5, means they get distributed across various nodes v
