@@ -68,3 +68,34 @@ autoscaling grp auto scale ur servers
 k8s is container is container orchestration
 
 replica=5, means they get distributed across various nodes v
+
+
+**Downsides of services
+
+1) if u have mutiple applications, u need multiple services
+
+controller manager runs bunch of controllers 
+
+ingress(api obj that manages external access to the service in a cluster typically http, provides load balancing) controller
+
+
+**Namespaces 
+A Namespace in Kubernetes is like a virtual cluster inside a physical cluster.
+
+It lets you logically group and isolate Kubernetes resources (Pods, Services, Deployments, etc.) within the same cluster
+
+kubectl get pods 
+
+
+23/08
+kubernetes architecture:-
+
+kuberntes cluster inside then nodes inside pods are containers(similar to docker container) 
+
+
+**ConfigMap-
+A ConfigMap is a Kubernetes object used to store configuration data (like environment variables, config files, command-line arguments) separately from your container images.
+
+👉 This follows the 12-factor app principle: keep config separate from code.
+
+So instead of baking config into your Docker image (which makes it hard to change), you can keep it in a ConfigMap, and inject it into Pods at runtime.
