@@ -143,3 +143,33 @@ spec:
 autoscaling is bad if u have spikey workloads
 
 node autoscaling
+What it does:
+Node autoscaling adds or removes worker nodes in your Kubernetes cluster depending on the scheduling needs of pods.
+
+Example scenario:
+If HPA tries to scale up pods but there’s not enough CPU/memory on current nodes, the Cluster Autoscaler provisions a new node (from your cloud provider like AWS, GCP, Azure, etc.) so those pods can run.
+Conversely, if nodes become empty (no pods running on them), it can shut them down to save cost.
+
+How it works:
+
+Watches unschedulable pods (pods pending due to lack of resources).
+
+Decides whether to add a new node.
+
+Periodically checks for underutilized nodes and scales down if safe.
+
+Example (conceptual):
+
+Your cluster has 3 nodes. Each node is fully packed with pods.
+
+HPA decides to add 5 new pods.
+
+The new pods are pending → Cluster Autoscaler kicks in → provisions a new node → pods get scheduled there.
+
+👉 Key point: Cluster Autoscaler ensures there’s enough infrastructure capacity (nodes) to support the scaling decisions of the HPA.
+| Feature     | Horizontal Pod Autoscaler (HPA)        | Node Autoscaling (Cluster Autoscaler) |
+| ----------- | -------------------------------------- | ------------------------------------- |
+| **Scales**  | Pods (application layer)               | Nodes (infrastructure layer)          |
+| **Trigger** | CPU/memory utilization, custom metrics | Unschedulable pods / unused nodes     |
+| **Goal**    | Handle application load                | Ensure enough resources in cluster    |
+| **Runs at** | Kubernetes API level                   | Cloud provider or cluster infra level |
