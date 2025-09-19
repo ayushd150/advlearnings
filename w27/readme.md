@@ -99,3 +99,47 @@ A ConfigMap is a Kubernetes object used to store configuration data (like enviro
 👉 This follows the 12-factor app principle: keep config separate from code.
 
 So instead of baking config into your Docker image (which makes it hard to change), you can keep it in a ConfigMap, and inject it into Pods at runtime.
+
+
+
+19/09
+horizontal pod autoscaler
+automatically inc no. of pods(replica no has been hardcoded till now) if demand increase, npt inc size of pod 
+
+What it does:
+HPA automatically adjusts the number of Pods in a Deployment, StatefulSet, or ReplicaSet based on observed metrics (like CPU or memory usage, or even custom metrics).
+
+Example scenario:
+If your web app is under heavy traffic and CPU usage per pod goes above a threshold (say 80%), HPA will create more pods to handle the load.
+When traffic reduces, it scales down pods to save resources.
+
+How it works:
+
+Monitors metrics from the Kubernetes Metrics API.
+
+Compares current value with desired target.
+
+Decides whether to scale up/down the number of pods.
+
+example hpa
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: webapp-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: webapp
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 80
+autoscaling is bad if u have spikey workloads
+
+node autoscaling
